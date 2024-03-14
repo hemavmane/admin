@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <link rel="stylesheet" href="./category.css">
+    <link rel="stylesheet" href="./customertable.css" />
+
+</head>
+
+<body>
+    <header>
+        <h2>Aerospace</h2>
+    </header>
+    <div class="superadmin-container">
+        <aside class="sidebar">
+            <h1>SuperAdmin</h1>
+            <ul>
+                <li class="active">
+                    <a href="./product.html" class="textdeco"> Add Product</a>
+                </li>
+                <li class="active"><a href="/Banner.html" class="textdeco"> Banner</a></li>
+                <li class="active"><a href="/UserList.html" class="textdeco"> Userlist</a></li>
+                <li class="active"><a href="/About.html" class="textdeco"> About AeroNex</a></li>
+                <li class="active"><a href="/Clients.html" class="textdeco"> Client</a></li>
+            </ul>
+        </aside>
+        <section class="content">
+            <form id="About" class="About-form">
+
+                <label for="AboutDescription">Company Email:</label>
+                <input type="text" id="Aboutemail" placeholder="Enter About Email" required />
+
+                <label for="AboutImages">Company Logo:</label>
+                <input type="file" id="AboutImages" accept="image/*" required>
+
+
+                <label for="AboutPrice">Company Phone:</label>
+                <input type="number" id="Aboutphone" placeholder="Enter About Phone" required>
+                <label for="AboutPrice">Company Address:</label>
+                <textarea id="Aboutaddres" placeholder="Enter About Address" required></textarea>
+
+                <button type="button" id="submitButton" class="btn btn-primary" onclick="addAbout()">Add
+                    About Company </button>
+            </form>
+            <div class="custom-table">
+                <div class="table-row header">
+                    <div class="table-cell">SI No</div>
+                    <div class="table-cell">Company Phone</div>
+                    <div class="table-cell">Email Id</div>
+                    <div class="table-cell">Address</div>
+                </div>
+
+                <ul class="user-list" id="userList">
+
+                </ul>
+
+            </div>
+
+            <ul class="pagination" id="pagination">
+
+            </ul>
+        </section>
+    </div>
+
+
+    <script>
+
+        function addAbout() {
+
+            const Aboutphone = document.getElementById('Aboutphone').value;
+            const Aboutprofile = document.getElementById('AboutImages').files[0];
+            const Aboutemail = document.getElementById('Aboutemail').value;
+            const Aboutaddres = document.getElementById('Aboutaddres').value;
+
+            let formData = new FormData();
+            formData.append("phone", Aboutphone);
+            formData.append("images", Aboutprofile);
+            formData.append("email", Aboutemail);
+            formData.append("OfficeAddress", Aboutaddres);
+
+            fetch('https://assesmentmarch.onrender.com/api/addAbout', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert('About added successfully:', data);
+                })
+                .catch(error => {
+                    console.error('Error adding About:', error);
+                });
+        }
+
+        async function fetchData() {
+            try {
+                const response = await fetch('https://assesmentmarch.onrender.com/api/getAbout');
+                const data = await response.json();
+                console.log(data)
+                return data.data;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                return [];
+            }
+        }
+
+        const itemsPerPage = 8;
+        let currentPage = 1;
+
+        async function displayUsers(page) {
+            const userListContainer = document.getElementById('userList');
+            userListContainer.innerHTML = '';
+
+            const users = await fetchData();
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const displayedUsers = users.slice(startIndex, endIndex);
+
+            displayedUsers.forEach((user, index) => {
+                const userRow = document.createElement('div');
+                userRow.classList.add('table-row');
+
+                // Populate user information into individual cells
+                userRow.innerHTML = `
+                <div class="table-cell">${index + 1}</div>
+                
+            <div class="table-cell">${user.phone}</div>
+            <div class="table-cell">${user.email}</div>
+            <div class="table-cell">${user.OfficeAddress}</div>
+           
+        `;
+                userListContainer.appendChild(userRow); // Add the user row to the container
+            });
+        }
+
+
+        function displayPagination() {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+
+            fetchData().then(users => {
+                const totalPages = Math.ceil(users.length / itemsPerPage);
+
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageLink = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = '#';
+                    link.textContent = i;
+                    if (i === currentPage) {
+                        link.classList.add('active');
+                    }
+                    link.addEventListener('click', () => {
+                        currentPage = i;
+                        displayUsers(currentPage);
+                        highlightActivePage();
+                    });
+                    pageLink.appendChild(link);
+                    pagination.appendChild(pageLink);
+                }
+            });
+        }
+
+        function highlightActivePage() {
+            const links = document.querySelectorAll('.pagination li a');
+            links.forEach(link => {
+                link.classList.remove('active');
+                if (parseInt(link.textContent) === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+
+        displayUsers(currentPage);
+        displayPagination();
+    </script>
+</body>
+
+</html>

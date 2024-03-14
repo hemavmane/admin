@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./category.css">
+  <link rel="stylesheet" href="./customertable.css">
+  <title>SuperAdmin Panel</title>
+</head>
+
+<body>
+  <header>
+    <h2>Aerospace</h2>
+  </header>
+  <div class="superadmin-container">
+    <aside class="sidebar">
+      <h1>SuperAdmin</h1>
+      <ul>
+          <li class="active">
+              <a href="./product.html" class="textdeco"> Add Product</a>
+          </li>
+          <li class="active"><a href="/Banner.html" class="textdeco"> Banner</a></li>
+          <li class="active"><a href="/UserList.html" class="textdeco"> Userlist</a></li>
+          <li class="active"><a href="/About.html" class="textdeco"> About AeroNex</a></li>
+          <li class="active"><a href="/Clients.html" class="textdeco"> Client</a></li>
+      </ul>
+  </aside>
+    <section class="content">
+      <form id="productForm" class="product-form">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" placeholder="Enter product name" required>
+
+        <label for="productDescription">Product Description:</label>
+        <textarea id="productDescription" placeholder="Enter product description" required></textarea>
+
+        <label for="productImages">Product Images:</label>
+        <input type="file" id="productImages" accept="image/*" required>
+
+
+        <label for="productPrice">Product Price:</label>
+        <input type="number" id="productPrice" placeholder="Enter product price" required>
+
+        <label for="productManufacturer">Manufacturer:</label>
+        <input type="text" id="productManufacturer" placeholder="Enter manufacturer" required>
+
+        <label for="productCategory">Category:</label>
+        <input type="text" id="productCategory" placeholder="Enter category" required>
+
+        <label for="productSpecifications">Specifications:</label>
+        <textarea id="productSpecifications" placeholder="Enter specifications"></textarea>
+
+        <button type="button" onclick="addProduct()" class="btn btn-primary">Add Product</button>
+      </form>
+      <section class="content">
+
+        <section class="content">
+          <div class="custom-table">
+            <div class="table-row header">
+              <div class="table-cell">SI.No</div>
+              <div class="table-cell">Product Name</div>
+              <div class="table-cell">Category</div>
+              <div class="table-cell">Price</div>
+              <div class="table-cell">Manufacturer</div>
+              <div class="table-cell">Specifications</div>
+              <div class="table-cell">Description</div>
+              <div class="table-cell">Action</div>
+            </div>
+
+            <ul class="user-list" id="userList">
+
+            </ul>
+
+          </div>
+
+          <ul class="pagination" id="pagination">
+
+          </ul>
+        </section>
+      </section>
+    </section>
+  </div>
+
+  <script src="./product.js">
+
+  </script>
+</body>
+
+</html>

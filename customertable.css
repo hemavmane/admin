@@ -1,0 +1,96 @@
+
+
+.sect3 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+
+.text_section {
+    width: 300px;
+    opacity: 0;
+    transform: translateY(50%);
+    animation: slideIn 2s forwards;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.imgss {
+    width: 100%;
+    margin: auto;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin: auto;
+}
+
+.custom-table2 {
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin: auto;
+}
+
+.table-row {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+}
+
+.table-cell {
+    flex: 1;
+    padding: 10px;
+    text-align: left;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+}
+
+.user-list {
+    list-style: none;
+    padding: 0;
+}
+
+.user-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin-right: 5px;
+}
+
+.pagination li a {
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.pagination li a.active {
+    background-color: #ccc;
+}
+
+.tableimage{
+    width: 30px !important;
+}

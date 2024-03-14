@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./category.css">
+    <link rel="stylesheet" href="./customertable.css">
+</head>
+
+<body>
+    <header>
+        <h2>Aerospace</h2>
+    </header>
+    <div class="superadmin-container">
+        <aside class="sidebar">
+            <h1>SuperAdmin</h1>
+            <ul>
+                <li class="active">
+                    <a href="./product.html" class="textdeco">
+                        Add Product</a>
+                </li>
+                <li class="active"><a href="/Banner.html" class="textdeco"> Banner</a></li>
+                <li class="active"><a href="/UserList.html" class="textdeco"> Userlist</a></li>
+                <li class="active"><a href="/About.html" class="textdeco"> About AeroNex</a></li>
+                <li class="active"><a href="/Clients.html" class="textdeco"> Client</a></li>
+            </ul>
+        </aside>
+        <section class="content">
+            <form id="productForm" class="product-form">
+                <label for="productImages">Banner</label>
+                <input type="file" id="productImages" accept="image/*" required>
+                <button type="button" onclick="addBanner()" class="btn btn-primary">Add Product</button>
+            </form>
+
+            <section class="content">
+                <div class="custom-table" >
+                    <div class="table-row header">
+                        <div class="table-cell">SI.No</div>
+                        <div class="table-cell"></div>
+                        
+                    </div>
+        
+                    <ul class="user-list" id="userList">
+        
+                    </ul>
+        
+                </div>
+        
+                <ul class="pagination" id="pagination">
+        
+                </ul>
+            </section>
+        </section>
+    </div>
+   
+    <script src="./Banner.js">
+    </script>
+</body>
+
+</html>

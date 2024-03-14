@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Anta&display=swap');
+
+
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+.FORM_container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+@keyframes flicker {
+
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+
+    text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px #0fa,
+      0 0 80px #0fa,
+      0 0 90px #0fa,
+      0 0 100px #0fa,
+      0 0 150px #0fa;
+
+  }
+
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
+ 
+
+
+}
+
+.neonText {
+  animation: flicker 1.5s infinite alternate;
+  color: #fff;
+}
+
+video {
+  width: 50%;
+  height: 50%;
+}
+
+
+.Registration_form {
+  width: auto;
+  height: auto;
+  box-shadow: 5px 5px 5px;
+  margin: auto;
+  padding: 10px 5px;
+  border-radius: 5px;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* position: absolute; */
+  z-index: 5;
+  transition: 3ms;
+}
+
+.parent {
+  display: flex;
+  flex-direction: column;
+  gap: 1;
+}
+
+.Registration_form:hover {
+  background-color: rgba(240, 248, 255, 0.219);
+  transform: rotate3d(1);
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  /* margin-top: 15px; */
+  font-family: "Anta", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.Registration_form {
+  justify-content: center;
+  position: absolute;
+  z-index: 5;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Added smooth transition */
+}
+
+.Registration_form:hover {
+  background-color: rgba(240, 248, 255, 0.13);
+  backdrop-filter: blur(5px);
+  /* Apply blur on hover */
+  box-shadow: 3px 4px 4px rgb(14, 12, 12);
+}
+
+
+
+.img {
+  text-align: center;
+  margin: auto;
+}
+
+.images {
+  display: none;
+}
+
+.lable {
+  /* border-radius: 15px; */
+  padding: 15px;
+  margin-top: 15px;
+  border: none;
+  width: 400px;
+  font-family: "Anta", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+.parent {
+  margin: auto;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.form-container {
+  padding: 15px;
+}
+
+.btn,.btn2 {
+  background-color: rgba(8, 8, 8, 0.247);
+  border-radius: 15px;
+  border: none;
+  width: 400px;
+  color: white;
+  padding: 15px;
+  font-size: larger;
+  margin-top: 35px;
+  cursor: pointer;
+
+}
+
+.btn:hover,.btn2:hover {
+  background-color: rgba(6, 7, 7, 0.596);
+  border: 1px solid rgb(241, 240, 237);
+}
+
+.form-container2 {
+  background-color: rgb(134, 147, 158);
+}
+
+.lable {
+  background-color: rgba(8, 7, 7, 0.651);
+  border: none;
+}
+
+input {
+  outline: none;
+ color: #ccc;
+}
+
+input:hover {
+
+  border-bottom: 1px solid white !important;
+}
